@@ -17,6 +17,6 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        transform.LookAt(player);
+        transform.LookAt(player, Vector3.forward);
     }
 }
