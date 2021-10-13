@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cannotMove: 0
   moveSpeed: 5
+  move: {x: 0, y: 0, z: 0}
   player: {fileID: 3568496047610667102}
   target: {fileID: 5168621332798316353}
 --- !u!1001 &318536513365699229
@@ -105,7 +106,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -6746901362522029464, guid: cc7535bf783839d48b78b9e3e7f4d4ac, type: 3}
+    - {fileID: 3886170499698346692, guid: cc7535bf783839d48b78b9e3e7f4d4ac, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cc7535bf783839d48b78b9e3e7f4d4ac, type: 3}
 --- !u!4 &3568496047610667102 stripped
 Transform:
@@ -229,7 +232,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1523204762931639366, guid: bb611fa594609fb40bdb9a9309b8c4f4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bb611fa594609fb40bdb9a9309b8c4f4, type: 3}
 --- !u!4 &5168621332798316353 stripped
 Transform:

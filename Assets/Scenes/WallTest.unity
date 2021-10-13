@@ -136,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4243954609469619356, guid: 0efc7e4573f35c94482794df712ee286, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4243954609469619356, guid: 0efc7e4573f35c94482794df712ee286, type: 3}
       propertyPath: m_LocalPosition.x
@@ -176,6 +176,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4243954609469619356, guid: 0efc7e4573f35c94482794df712ee286, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8614634054631623821, guid: 0efc7e4573f35c94482794df712ee286, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -276,7 +280,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5212283368950723389, guid: 59d129d1103e9c245a3a308a29599a96, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5212283368950723389, guid: 59d129d1103e9c245a3a308a29599a96, type: 3}
       propertyPath: m_LocalPosition.x
@@ -375,6 +379,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedCube
       objectReference: {fileID: 0}
+    - target: {fileID: 6669827825383980526, guid: 1d489cf0ead915843bf26767537cc737, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d489cf0ead915843bf26767537cc737, type: 3}
 --- !u!1001 &1755347292
@@ -386,7 +394,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2529418537333147784, guid: 57e5cc6076d40a6428d0a8ed941ac7a0, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2529418537333147784, guid: 57e5cc6076d40a6428d0a8ed941ac7a0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -443,11 +451,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2753277929426381045, guid: 4024d04841d65cf4a9dbe1f7eecdd25a, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7297403986044717881, guid: 4024d04841d65cf4a9dbe1f7eecdd25a, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7297403986044717881, guid: 4024d04841d65cf4a9dbe1f7eecdd25a, type: 3}
       propertyPath: m_LocalPosition.x

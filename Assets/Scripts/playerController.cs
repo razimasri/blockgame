@@ -1,26 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class playerController : MonoBehaviour
 {
 
-    public bool cannotMove;
     public float moveSpeed = 7f;
-    public Vector3 move;
     [SerializeField] Transform player;
     [SerializeField] Transform target;
-    private Vector3Int origin;
 
+    private int layerMask;
 
-    //rebuild player movemtn script. no wall or ovehangecollisions detection fully implementeed yet
 
 
     // Start is called before the first frame update
     void Start()
     {
-
+        layerMask = LayerMask.GetMask("Wall");
     }
 
     // Update is called once per frame
@@ -30,7 +25,8 @@ public class playerController : MonoBehaviour
         // This first part will control where the target moves. Not wall collision added yet. but it is nice and smooth
         Vector3 xinput = Vector3.zero;
         Vector3 zinput = Vector3.zero;
-        origin = new Vector3Int(Mathf.RoundToInt(player.transform.position.x), 0, Mathf.RoundToInt(player.transform.position.z));
+        Vector3 move = Vector3.zero;
+
 
         if (target.transform.position == player.transform.position)
         {
@@ -38,7 +34,6 @@ public class playerController : MonoBehaviour
             if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
             {
                 xinput = new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0);
-
             }
 
             else if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f)
@@ -47,34 +42,20 @@ public class playerController : MonoBehaviour
                 //target.position += zinput;
             }
 
-
             move = xinput + zinput;
             target.position += move;
-            if (!Physics.Raycast(target.position, Vector3.down))
-            {
-                cannotMove = true;
-
-            }
-
 
         }
 
 
-        foreach (Transform g in player.transform.GetComponentsInChildren<Transform>())
+        if (MoveCheck(move, target.position))
         {
-            Debug.Log(g.name);
-        }
-
-        if (cannotMove)
-        {
-            target.transform.position = origin;
-            player.transform.position = origin;
-            cannotMove = false;
+            player.position = Vector3.MoveTowards(player.position, target.position, moveSpeed * Time.deltaTime);
         }
         else
         {
-
-            player.position = Vector3.MoveTowards(player.position, target.position, moveSpeed * Time.deltaTime);
+            target.transform.position = player.transform.position;
+            
         }
 
         //Menu commands - also will add music commands but focus on walls
@@ -89,11 +70,25 @@ public class playerController : MonoBehaviour
             SceneManager.LoadScene("Main Menu");
         }
 
-        
-
-         
-               
-
-
     }
+
+    private bool MoveCheck(Vector3 move, Vector3 target)
+    {
+
+        if (!Physics.Raycast(target, Vector3.down))
+        {
+            return false;
+        }
+
+        foreach (Transform block in player.transform.GetComponentsInChildren<Transform>())
+        {
+            if (Physics.Raycast(block.position, move, 0.5f, layerMask))
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
 }
