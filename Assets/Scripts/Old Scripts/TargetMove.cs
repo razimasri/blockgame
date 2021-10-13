@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class TargetMove : MonoBehaviour
 {
-    
    
     public bool wall;
     public Transform player;
