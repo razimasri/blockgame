@@ -60,6 +60,11 @@ public class playerController : MonoBehaviour
         }
 
 
+        foreach (Transform g in player.transform.GetComponentsInChildren<Transform>())
+        {
+            Debug.Log(g.name);
+        }
+
         if (cannotMove)
         {
             target.transform.position = origin;
