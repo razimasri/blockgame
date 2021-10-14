@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class playerController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
 
     private float moveSpeed = 7f;
@@ -22,14 +22,14 @@ public class playerController : MonoBehaviour
     {
 
         // This first part will control where the target moves. Not wall collision added yet. but it is nice and smooth
-        Vector3 xinput = Vector3.zero;
-        Vector3 zinput = Vector3.zero;
+        
         Vector3 move = Vector3.zero;
 
 
         if (target.transform.position == player.transform.position)
         {
-
+            Vector3 xinput = Vector3.zero;
+            Vector3 zinput = Vector3.zero;
             if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
             {
                 xinput = new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0);
@@ -47,7 +47,7 @@ public class playerController : MonoBehaviour
         }
 
 
-        if (MoveCheck(move, target.position))
+        if (CanMove(move, target.position))
         {
             player.position = Vector3.MoveTowards(player.position, target.position, moveSpeed * Time.deltaTime);
         }
@@ -71,7 +71,7 @@ public class playerController : MonoBehaviour
 
     }
 
-    private bool MoveCheck(Vector3 move, Vector3 target)
+    private bool CanMove(Vector3 move, Vector3 target)
     {
 
         if (!Physics.Raycast(target, Vector3.down))
