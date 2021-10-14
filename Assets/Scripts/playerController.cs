@@ -4,10 +4,9 @@ using UnityEngine.SceneManagement;
 public class playerController : MonoBehaviour
 {
 
-    public float moveSpeed = 7f;
+    private float moveSpeed = 7f;
     [SerializeField] Transform player;
     [SerializeField] Transform target;
-
     private int layerMask;
 
 
