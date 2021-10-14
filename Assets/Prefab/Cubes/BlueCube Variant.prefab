@@ -55,6 +55,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlueCube Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 2986351094441211377, guid: 1d489cf0ead915843bf26767537cc737, type: 3}
+      propertyPath: m_TagString
+      value: BlueCube
+      objectReference: {fileID: 0}
     - target: {fileID: 6934799284607026808, guid: 1d489cf0ead915843bf26767537cc737, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

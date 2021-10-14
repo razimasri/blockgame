@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Transform player;
     [SerializeField] Transform target;
     private int layerMask;
-
+    private Vector3 move;
 
 
     // Start is called before the first frame update
@@ -21,42 +21,28 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        // This first part will control where the target moves. Not wall collision added yet. but it is nice and smooth
-        
-        Vector3 move = Vector3.zero;
-
+        // This first part will control where the target moves. Then in fixed update it will raycast   
 
         if (target.transform.position == player.transform.position)
         {
-            Vector3 xinput = Vector3.zero;
-            Vector3 zinput = Vector3.zero;
+           
             if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
             {
-                xinput = new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0);
+                move = new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0);
             }
 
             else if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f)
             {
-                zinput = new Vector3(0, 0, Input.GetAxisRaw("Vertical"));
-                //target.position += zinput;
+                move = new Vector3(0, 0, Input.GetAxisRaw("Vertical"));
+                
             }
 
-            move = xinput + zinput;
-            target.position += move;
+           
+           
 
         }
 
-
-        if (CanMove(move, target.position))
-        {
-            player.position = Vector3.MoveTowards(player.position, target.position, moveSpeed * Time.deltaTime);
-        }
-        else
-        {
-            target.transform.position = player.transform.position;
-            
-        }
-
+                
         //Menu commands - also will add music commands but focus on walls
 
         if (Input.GetKeyDown(KeyCode.R))
@@ -70,14 +56,10 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+  
 
     private bool CanMove(Vector3 move, Vector3 target)
     {
-
-        if (!Physics.Raycast(target, Vector3.down))
-        {
-            return false;
-        }
 
         foreach (Transform block in player.transform.GetComponentsInChildren<Transform>())
         {
@@ -86,8 +68,31 @@ public class PlayerController : MonoBehaviour
                 return false;
             }
         }
+        if (!Physics.Raycast(target, Vector3.down))
+        {
+            return false;
+        }
 
+        
         return true;
+    }
+
+  private void FixedUpdate() // needed to use fixed update or it sometimes flew by. did the fixed update do this? so i need fixed update to ensure attach but I need late or normale update to not collide with walls...
+    {
+        target.position += move; //had to move down here or i had the issue of cubes not attach OR wall not detected no longer detecting walls
+        
+
+        if (CanMove(move, target.position))
+        {
+            player.position = Vector3.MoveTowards(player.position, target.position, moveSpeed * Time.deltaTime);
+        }
+        else
+        {
+            target.transform.position = player.transform.position;
+            
+        }
+
+        move = Vector3.zero;
     }
 
 }
