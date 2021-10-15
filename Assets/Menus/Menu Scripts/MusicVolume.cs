@@ -3,8 +3,8 @@ using UnityEngine.UI;
 
 public class MusicVolume : MonoBehaviour
 {
-    public Sprite[] volumeSprite;
-    private Image volumeImage;
+    public Sprite[] volumeSprites;
+    private Image currentSprite;
     private AudioSource music;
     private int vol;
     public GameObject BGMusic;
@@ -21,7 +21,7 @@ public class MusicVolume : MonoBehaviour
     }
     void Start()
     {
-        volumeImage= GetComponent<Image>();
+        currentSprite= GetComponent<Image>();
         music = GameObject.Find("Music(Clone)").GetComponent<AudioSource>();
         
 
@@ -42,7 +42,7 @@ public class MusicVolume : MonoBehaviour
     public void Update()
     {
         music.volume = vol / 3f;
-        volumeImage.sprite = volumeSprite[vol];
+        currentSprite.sprite = volumeSprites[vol];
     }
 
     // Update is called once per frame

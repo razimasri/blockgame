@@ -73,8 +73,6 @@ public class PlayerController : MonoBehaviour
         {
             return false;
         }
-
-        
         return true;
     }
 

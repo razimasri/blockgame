@@ -13,7 +13,7 @@ public class BackgroundMusic : MonoBehaviour
        if (GameObject.Find("DontDestroyOnLoad")) {
             Debug.Log("musicSource already");
         }
-            DontDestroyOnLoad(this);
+       else     DontDestroyOnLoad(this);
         musicSource.PlayOneShot(musicStart);
         musicSource.PlayScheduled(AudioSettings.dspTime + musicStart.length);
     }

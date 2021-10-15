@@ -5,7 +5,7 @@ using UnityEngine;
 public class CubeController : MonoBehaviour
 {
     [SerializeField] Transform player;
-    private int layerMask, fadeDirection; //, playerLayer;
+    private int layerMask; 
     private Renderer m_Renderer;
 
     void Start()
@@ -25,11 +25,7 @@ public class CubeController : MonoBehaviour
             gameObject.layer = 10;
             transform.DetachChildren();
             transform.parent = null;
-            if (gameObject.layer == 10 && gameObject.transform.childCount == 0)
-            {
-                fadeDirection = 1;
-                StartCoroutine(Fade());
-            }
+            if (gameObject.layer == 10 && gameObject.transform.childCount == 0) StartCoroutine(Fade(Vector3.up));
         }
         else if (other.transform.IsChildOf(player) && !transform.IsChildOf(player)) // make the contact cube a child of the player
         {
@@ -68,8 +64,7 @@ public class CubeController : MonoBehaviour
         {
             if (AllFall())
             {
-                fadeDirection = -1;
-                StartCoroutine(Fade());
+                StartCoroutine(Fade(Vector3.down));
             }
             else AttachCube(gameObject.GetComponent<SphereCollider>());
         }
@@ -87,7 +82,7 @@ public class CubeController : MonoBehaviour
         return true;
     }
 
-    public IEnumerator Fade()
+    public IEnumerator Fade(Vector3 direction)
     {
         while (this.GetComponent<Renderer>().material.color.a > 0)  // fade an object and also moves it up or down based on fade direction
         {
@@ -97,14 +92,14 @@ public class CubeController : MonoBehaviour
 
             fadeColor = new Color(fadeColor.r, fadeColor.g, fadeColor.b, fadeAmount);
             m_Renderer.material.color = fadeColor;
-            transform.Translate(Vector3.up * Time.deltaTime * 5 * fadeDirection);
+            transform.Translate(direction * Time.deltaTime * 5);
 
-            if (this.GetComponent<Renderer>().material.color.a < 0) // detroys an object once it has faded out. othersie a shadow remains
-            {
-                Destroy(gameObject);
-            }
+            //if (this.GetComponent<Renderer>().material.color.a < 0) // detroys an object once it has faded out. othersie a shadow remains
+           // {
+           //     Destroy(gameObject);
+           // }
             yield return null;
         }
-
+        Destroy(gameObject);
     }
 }

@@ -5,13 +5,7 @@ using UnityEngine.SceneManagement;
 public class Goal : MonoBehaviour
 {
     [SerializeField] Transform player;
-    
-    void Start()
-    {
-      
-    }
 
-    // Update is called once per frame
     void Update()
     {
         float scale = 1 - 0.2f * Mathf.Pow(Mathf.Sin(Mathf.PI * Time.realtimeSinceStartup), 2);
@@ -29,9 +23,4 @@ public class Goal : MonoBehaviour
             SceneManager.LoadScene(nextLevel);
         }
     }
-
-
-
-
-
 }
