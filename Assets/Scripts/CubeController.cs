@@ -5,12 +5,13 @@ using UnityEngine;
 public class CubeController : MonoBehaviour
 {
     [SerializeField] Transform player;
-    private int layerMask, fadeDirection;
+    private int layerMask, fadeDirection; //, playerLayer;
     private Renderer m_Renderer;
 
     void Start()
     {
         layerMask = LayerMask.GetMask("Cubes");
+      //  playerLayer = LayerMask.GetMask("Player");
         player = GameObject.Find("Player").transform;
         m_Renderer = GetComponent<Renderer>();
     }

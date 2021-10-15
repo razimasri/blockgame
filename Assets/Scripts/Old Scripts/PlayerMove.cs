@@ -27,7 +27,7 @@ public class PlayerMove : MonoBehaviour
     }
     void Update()
     {
-        if (goal.GetComponent<Goal>().check) { 
+       // if (goal.GetComponent<Goal>().check) { 
         if (transform.childCount == 0)
         {
             
@@ -40,7 +40,7 @@ public class PlayerMove : MonoBehaviour
                 Debug.Log(transform.childCount);
                 SceneManager.LoadScene(nextLevel);
             }
-        }
+      //  }
         }
     }
 
