@@ -61,7 +61,8 @@ public class PlayerController : MonoBehaviour
     private bool CanMove(Vector3 move, Vector3 target)
     {
 
-        foreach (Transform block in player.transform.GetComponentsInChildren<Transform>())
+        Transform[] playerCubes = player.transform.GetComponentsInChildren<Transform>(); //get componenet expensive to call everyloop so it is cached
+        foreach (Transform block in playerCubes)  // TODO: swap to a for loop when you can but keeping this readable for now as a beginner
         {
             if (Physics.Raycast(block.position, move, 0.5f, layerMask))
             {
