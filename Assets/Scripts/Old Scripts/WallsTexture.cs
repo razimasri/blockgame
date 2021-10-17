@@ -12,15 +12,5 @@ public class WallsTexture : MonoBehaviour
         GetComponent<Renderer>().material.SetTextureScale("_MainTex", scale);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-        }
-
-    private void OnTriggerEnter(Collider other)
-    {
-       
-            
-    }
+   
 }

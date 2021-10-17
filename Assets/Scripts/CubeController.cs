@@ -5,33 +5,40 @@ using UnityEngine;
 public class CubeController : MonoBehaviour
 {
     [SerializeField] Transform player;
-    private int layerMask; 
+    private int layerMask;
     private Renderer m_Renderer;
 
     void Start()
     {
         layerMask = LayerMask.GetMask("Cubes");
-      //  playerLayer = LayerMask.GetMask("Player");
         player = GameObject.Find("Player").transform;
         m_Renderer = GetComponent<Renderer>();
     }
 
     private void OnTriggerEnter(Collider other) // current options are to change to tag into cubes
     {
+       
         if (gameObject.CompareTag(other.gameObject.tag)) // TODO: not happy with this having to swap to a layer and check child count.
                                                          // detach children should be preventing all this extra destruction.
                                                          // maybe I could make a destroy empty object that itterated through it.
         {
+           
             gameObject.layer = 10;
             transform.DetachChildren();
             transform.parent = null;
             if (gameObject.layer == 10 && gameObject.transform.childCount == 0) StartCoroutine(Fade(Vector3.up));
+            
         }
         else if (other.transform.IsChildOf(player) && !transform.IsChildOf(player)) // make the contact cube a child of the player
         {
+           
+           
             transform.parent = other.transform;
-            AttachCube(gameObject.GetComponent<SphereCollider>());  // hmm since the parent was changed this may be redundent. Nop not redundent, 
+            
+            AttachCube(gameObject.GetComponent<SphereCollider>());
+            // hmm since the parent was changed this may be redundent. Nop not redundent, 
         }
+
     }
 
 
@@ -94,10 +101,7 @@ public class CubeController : MonoBehaviour
             m_Renderer.material.color = fadeColor;
             transform.Translate(direction * Time.deltaTime * 5);
 
-            //if (this.GetComponent<Renderer>().material.color.a < 0) // detroys an object once it has faded out. othersie a shadow remains
-           // {
-           //     Destroy(gameObject);
-           // }
+       
             yield return null;
         }
         Destroy(gameObject);
