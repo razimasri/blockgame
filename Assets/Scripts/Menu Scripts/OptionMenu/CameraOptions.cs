@@ -7,25 +7,20 @@ public class CameraOptions : MonoBehaviour
 {
 
     public Toggle[] cameraOption;
-   
 
-    // Start is called before the first frame update
     void Start()
     {      
         int cam = PlayerPrefs.GetInt("cam");
-       
         cameraOption[cam].isOn = true;
     }
 
-    public void SaveCam(bool camBool)
+    public void camToggle(bool camBool)
     {
-       Debug.Log(camBool + " is camBool");
-        int cam;
-        if (camBool) { cam = 0; }
-        else cam = 1;
+        int cam = camBool ? 0 : 1;
         PlayerPrefs.SetInt("cam", cam);
+       
     }
 
-    // Update is called once per frame
+   
 
 }

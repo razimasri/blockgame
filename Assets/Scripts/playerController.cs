@@ -1,32 +1,32 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class PlayerController : MonoBehaviour
 {
 
     private float moveSpeed = 7f;
-    [SerializeField] Transform player;
-    [SerializeField] Transform target;
+    [SerializeField] Transform player, target;
+    [SerializeField] GameObject menu;
     private int layerMask;
     private Vector3 move;
-    private GameObject overlay;
+
+   
 
 
     // Start is called before the first frame update
     void Start()
     {
         layerMask = LayerMask.GetMask("Wall");
-        if (GameObject.Find("OverLay") != null)
-        {
-            overlay = GameObject.Find("OverLay");
-        }
+        menu = GameObject.Find("Menu");
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         // This first part will control where the target moves. Then in fixed update it will raycast   
-        if (target.transform.position == player.transform.position)
+        if (target.transform.position == player.transform.position && !menu.GetComponent<Toggle>().isOn)
         {
             if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
             {
@@ -40,31 +40,7 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        //Overlay Commands
 
-        if (overlay != null)
-        {
-
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            }
-
-            if (Input.GetKeyDown(KeyCode.M))
-            {
-                overlay.transform.GetComponentInChildren<MusicVolume>().VolumeButton();
-            }
-
-            if (Input.GetKeyDown(KeyCode.C))
-            {
-                overlay.transform.GetComponentInChildren<CameraSelect>().ChangeCamera();
-            }
-
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                SceneManager.LoadScene("Main Menu");
-            }
-        }
     }
 
 

@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PrefsManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    
     
  //Loads all player prefs or sets to defaults. Seem smostly redundent right now
     private string[] prefNames = { "vol", "cam", "cb", "music", "sfx", "lvl" }; // all the player pref names
     private int[] prefs = { 3, 0, 0, 1, 1, 0 };  // my defualts will only load it there are none  
     public GameObject BGMusic;
+
     private void Awake()
     {
         LoadPrefs();
@@ -40,22 +42,17 @@ public class PrefsManager : MonoBehaviour
 
     public void LoadCamera()
     {
-        
-         Camera[] cameras = new Camera[2];
-         cameras[0] = GameObject.Find("Main Camera").GetComponent<Camera>();
-         cameras[1] = GameObject.Find("Angle Camera").GetComponent<Camera>();
 
-         if (prefs[1] ==0)
-         {
-            Debug.Log("got this far");
-             cameras[0].enabled = true;
-            cameras[1].enabled = false;
-         }
-         else if (prefs[1] == 1)
-         {
-             cameras[1].enabled = true;
-            cameras[0].enabled = false;
-        }
+   
+
+        Camera[] cameras = new Camera[2];
+        cameras[0] = GameObject.Find("Main Camera").GetComponent<Camera>();
+        cameras[1] = GameObject.Find("Angle Camera").GetComponent<Camera>();
+
+        cameras[0].enabled = prefs[1] == 0? true:false;
+        cameras[1].enabled = prefs[1] == 1? true:false;
+
+
     }
 
 

@@ -4,25 +4,39 @@ using UnityEngine;
 
 public class CubeController : MonoBehaviour
 {
-    [SerializeField] Transform player;
-    private int layerMask;
+    private Transform player;
+    private int layerMask,cb;
     private Renderer m_Renderer;
 
     void Start()
     {
         layerMask = LayerMask.GetMask("Cubes");
         player = GameObject.Find("Player").transform;
+
         m_Renderer = GetComponent<Renderer>();
+        m_Renderer.material.EnableKeyword("_NORMALMAP");
     }
+
+    private void Update()
+    {
+        //right now its check and update teh texture every frame
+        //i need this to only occur on a toggle but so many object have it.
+        if (cb != PlayerPrefs.GetInt("cb")){
+            cb = PlayerPrefs.GetInt("cb");
+            m_Renderer.material.SetFloat("_BumpScale", cb);
+        }
+        
+
+    }
+
 
     private void OnTriggerEnter(Collider other) // current options are to change to tag into cubes
     {
-       
+        player = GameObject.Find("Player").transform; // even thought his is assigned at start i for some reason forgets? ah, what a pain
         if (gameObject.CompareTag(other.gameObject.tag)) // TODO: not happy with this having to swap to a layer and check child count.
                                                          // detach children should be preventing all this extra destruction.
                                                          // maybe I could make a destroy empty object that itterated through it.
         {
-           
             gameObject.layer = 10;
             transform.DetachChildren();
             transform.parent = null;
@@ -36,6 +50,7 @@ public class CubeController : MonoBehaviour
             transform.parent = other.transform;
             
             AttachCube(gameObject.GetComponent<SphereCollider>());
+            
             // hmm since the parent was changed this may be redundent. Nop not redundent, 
         }
 
@@ -63,6 +78,8 @@ public class CubeController : MonoBehaviour
             AttachCube(nested.gameObject.GetComponent<SphereCollider>());
         }
 
+        AlignCube();
+
     }
     public void OnTransformParentChanged()  // Sometime while detaching a cube wil no longer be connected to the player since it parent was detroyed so we need to do a nother neightbout check 
     {                                       // dont like it but see if i can eliminate
@@ -75,6 +92,11 @@ public class CubeController : MonoBehaviour
             }
             else AttachCube(gameObject.GetComponent<SphereCollider>());
         }
+
+        float normal = transform.IsChildOf(player) ? 1 : 0;
+        m_Renderer.material.SetFloat("_DetailNormalMapScale", normal);
+
+
     }
     public bool AllFall()
     {
@@ -105,5 +127,11 @@ public class CubeController : MonoBehaviour
             yield return null;
         }
         Destroy(gameObject);
+    }
+
+    private void AlignCube()
+    {
+        Vector3Int align = new Vector3Int(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y), Mathf.RoundToInt(transform.position.z));
+        transform.position = align;
     }
 }
