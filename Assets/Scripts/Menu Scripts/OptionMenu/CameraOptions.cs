@@ -18,7 +18,9 @@ public class CameraOptions : MonoBehaviour
     {
         int cam = camBool ? 0 : 1;
         PlayerPrefs.SetInt("cam", cam);
-       
+        GameObject.Find("Main Camera").GetComponent<Camera>().enabled = camBool;
+        GameObject.Find("Angle Camera").GetComponent<Camera>().enabled = !camBool;
+
     }
 
    

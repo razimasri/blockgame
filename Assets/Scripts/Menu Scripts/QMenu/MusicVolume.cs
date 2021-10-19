@@ -19,7 +19,7 @@ public class MusicVolume : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M)) VolumeButton();
+        if (Input.GetKeyDown(KeyCode.V)) VolumeButton();
     }
 
     public void VolumeButton()

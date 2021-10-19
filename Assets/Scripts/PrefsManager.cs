@@ -43,8 +43,6 @@ public class PrefsManager : MonoBehaviour
     public void LoadCamera()
     {
 
-   
-
         Camera[] cameras = new Camera[2];
         cameras[0] = GameObject.Find("Main Camera").GetComponent<Camera>();
         cameras[1] = GameObject.Find("Angle Camera").GetComponent<Camera>();

@@ -13,7 +13,7 @@ public class ResetLevel : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R)) ResetTheLevel();
+        if (Input.GetKeyDown(KeyCode.Space)) ResetTheLevel();
     }
 
 
