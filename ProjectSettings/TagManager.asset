@@ -8,6 +8,8 @@ TagManager:
   - BlueCube
   - GreenCube
   - YellowCube
+  - PlayUI
+  - Music
   layers:
   - Default
   - TransparentFX

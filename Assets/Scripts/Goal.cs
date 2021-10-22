@@ -19,7 +19,7 @@ public class Goal : MonoBehaviour
             string thisLevel = SceneManager.GetActiveScene().name;
             int intLevel = int.Parse(thisLevel) + 1;
             string nextLevel = intLevel.ToString();
-            if (intLevel == 11) nextLevel = "Main Menu";
+            if (intLevel == 21) nextLevel = "Main Menu";
             SceneManager.LoadScene(nextLevel);
         }
     }

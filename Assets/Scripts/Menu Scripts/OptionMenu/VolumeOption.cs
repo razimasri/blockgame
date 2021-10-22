@@ -12,9 +12,9 @@ public class VolumeOption : MonoBehaviour
     void Start()
     {
         currentSprite = GetComponent<Image>();
-        music = GameObject.Find("Music(Clone)").GetComponent<AudioSource>();
+        music = GameObject.FindGameObjectWithTag("Music").GetComponent<AudioSource>(); //change to tag at some point
         vol = PlayerPrefs.GetInt("vol");
-        VolumeSlider(vol);
+     
     }
 
 
@@ -22,8 +22,9 @@ public class VolumeOption : MonoBehaviour
     {
         vol = (int)s_vol;
         PlayerPrefs.SetInt("vol", vol);
+        
         music.volume = vol / 3f;
-        currentSprite.sprite = volumeSprites[vol];
+       currentSprite.sprite = volumeSprites[vol]; //hmm causes a bug on load. figure out later. not critical
 
     }
 

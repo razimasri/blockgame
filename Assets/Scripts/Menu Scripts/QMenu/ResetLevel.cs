@@ -8,11 +8,15 @@ public class ResetLevel : MonoBehaviour
     
     public void ResetTheLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        string name = SceneManager.GetActiveScene().name;
+              
+        SceneManager.LoadScene(name);
+
     }
 
     public void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.Space)) ResetTheLevel();
     }
 

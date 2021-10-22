@@ -3,7 +3,9 @@ guid: 84bee5f6492cdb940881c337c67bb402
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - BGMusic: {fileID: 1019188414318278152, guid: 46cc65a5d9e8d6143a2c31fc09ee1507, type: 3}
+  - PlayUI: {fileID: 1213884907594311404, guid: acb099a022452c44a840ca3950d5423f, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

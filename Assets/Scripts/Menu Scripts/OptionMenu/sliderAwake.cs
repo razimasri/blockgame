@@ -6,7 +6,7 @@ public class sliderAwake : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<Slider>().value = PlayerPrefs.GetInt("vol");
+      GetComponent<Slider>().value = PlayerPrefs.GetInt("vol");
     }
 
 }

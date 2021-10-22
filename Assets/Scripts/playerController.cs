@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // This first part will control where the target moves. Then in fixed update it will raycast   
+        
         if (target.transform.position == player.transform.position && !menu.GetComponent<Toggle>().isOn)
         {
             if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)

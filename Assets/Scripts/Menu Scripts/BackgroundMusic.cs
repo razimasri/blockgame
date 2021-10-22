@@ -16,6 +16,7 @@ public class BackgroundMusic : MonoBehaviour
        else     DontDestroyOnLoad(this);
         musicSource.PlayOneShot(musicStart);
         musicSource.PlayScheduled(AudioSettings.dspTime + musicStart.length);
+        musicSource.volume = PlayerPrefs.GetInt("vol") / 3f;
     }
 
 }

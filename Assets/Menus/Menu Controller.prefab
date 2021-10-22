@@ -76,7 +76,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1018942133614626442}
   - component: {fileID: 1018942133614626443}
-  - component: {fileID: 1482141580959771962}
   m_Layer: 0
   m_Name: Menu Controller
   m_TagString: Untagged
@@ -112,15 +111,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BGMusic: {fileID: 1019188414318278152, guid: 46cc65a5d9e8d6143a2c31fc09ee1507, type: 3}
---- !u!114 &1482141580959771962
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1018942133614626440}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6af94112269475f47875133eb48007a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  PlayUI: {fileID: 1213884907594311404, guid: acb099a022452c44a840ca3950d5423f, type: 3}

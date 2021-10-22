@@ -5,7 +5,7 @@ using UnityEngine;
 public class CubeController : MonoBehaviour
 {
     private Transform player;
-    private int layerMask,cb;
+    private int layerMask, cb;
     private Renderer m_Renderer;
 
     void Start()
@@ -19,14 +19,13 @@ public class CubeController : MonoBehaviour
 
     private void Update()
     {
-        //right now its check and update teh texture every frame
+        //TODO: right now its check and update the texture every frame need to swap to an event
         //i need this to only occur on a toggle but so many object have it.
-        if (cb != PlayerPrefs.GetInt("cb")){
+        if (cb != PlayerPrefs.GetInt("cb"))
+        {
             cb = PlayerPrefs.GetInt("cb");
             m_Renderer.material.SetFloat("_BumpScale", cb);
         }
-        
-
     }
 
 
@@ -41,17 +40,13 @@ public class CubeController : MonoBehaviour
             transform.DetachChildren();
             transform.parent = null;
             if (gameObject.layer == 10 && gameObject.transform.childCount == 0) StartCoroutine(Fade(Vector3.up));
-            
+
         }
         else if (other.transform.IsChildOf(player) && !transform.IsChildOf(player)) // make the contact cube a child of the player
         {
-           
-           
             transform.parent = other.transform;
-            
+
             AttachCube(gameObject.GetComponent<SphereCollider>());
-            
-            // hmm since the parent was changed this may be redundent. Nop not redundent, 
         }
 
     }
@@ -92,11 +87,8 @@ public class CubeController : MonoBehaviour
             }
             else AttachCube(gameObject.GetComponent<SphereCollider>());
         }
-
         float normal = transform.IsChildOf(player) ? 1 : 0;
         m_Renderer.material.SetFloat("_DetailNormalMapScale", normal);
-
-
     }
     public bool AllFall()
     {
@@ -115,15 +107,14 @@ public class CubeController : MonoBehaviour
     {
         while (this.GetComponent<Renderer>().material.color.a > 0)  // fade an object and also moves it up or down based on fade direction
         {
-            m_Renderer.material.SetTextureScale("_MainTex", new Vector2(3, 3));
+
             Color fadeColor = this.GetComponent<Renderer>().material.color;
-            float fadeAmount = fadeColor.a - (0.5f * Time.deltaTime);
+            float fadeAmount = fadeColor.a - (1f * Time.deltaTime);
 
             fadeColor = new Color(fadeColor.r, fadeColor.g, fadeColor.b, fadeAmount);
             m_Renderer.material.color = fadeColor;
             transform.Translate(direction * Time.deltaTime * 5);
 
-       
             yield return null;
         }
         Destroy(gameObject);
