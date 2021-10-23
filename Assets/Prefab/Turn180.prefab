@@ -803,13 +803,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3292313885590602245}
   - component: {fileID: -7846578459698194023}
-<<<<<<< Updated upstream
   m_Layer: 0
-=======
-  - component: {fileID: 3879998584004900962}
-  - component: {fileID: 197634272875633830}
-  m_Layer: 9
->>>>>>> Stashed changes
   m_Name: Turn180
   m_TagString: Untagged
   m_Icon: {fileID: 0}

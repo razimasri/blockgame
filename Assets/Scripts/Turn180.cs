@@ -11,8 +11,8 @@ public class Turn180 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("Player");
-        playerEmpty = GameObject.Find("PlayerEmpty");
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerEmpty = player.transform.parent.gameObject;
         anim = player.GetComponent<Animator>();
     }
 

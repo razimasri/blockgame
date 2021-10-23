@@ -1,21 +1,18 @@
 using UnityEngine;
-<<<<<<< Updated upstream
+
 using UnityEngine.SceneManagement;
-=======
+
 using UnityEngine.UI;
 using System.Collections;
->>>>>>> Stashed changes
 
-public class playerController : MonoBehaviour
+
+public class PlayerController : MonoBehaviour
 {
 
     private float moveSpeed = 7f;
-<<<<<<< Updated upstream
-    [SerializeField] Transform player;
-    [SerializeField] Transform target;
-    private int layerMask;
 
-=======
+
+
     [SerializeField] Transform player, target;
     [SerializeField] GameObject menu;
     public LayerMask layerMask;
@@ -28,102 +25,69 @@ public class playerController : MonoBehaviour
         pause = false;
         yield return null;
     }
->>>>>>> Stashed changes
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-<<<<<<< Updated upstream
-        layerMask = LayerMask.GetMask("Wall");
-=======
-        menu = GameObject.Find("Menu");
-        
->>>>>>> Stashed changes
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-<<<<<<< Updated upstream
-
-        // This first part will control where the target moves. Not wall collision added yet. but it is nice and smooth
-        Vector3 xinput = Vector3.zero;
-        Vector3 zinput = Vector3.zero;
-        Vector3 move = Vector3.zero;
-
-
-        if (target.transform.position == player.transform.position)
-=======
-        // This first part will control where the target moves. Then in fixed update it will raycast   
-        
-        if (target.transform.position == player.transform.position && !menu.GetComponent<Toggle>().isOn &&!pause)
->>>>>>> Stashed changes
+        // Start is called before the first frame update
+        void Start()
         {
-
-            if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
-            {
-                xinput = new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0);
-            }
-
-            else if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f)
-            {
-                zinput = new Vector3(0, 0, Input.GetAxisRaw("Vertical"));
-                //target.position += zinput;
-            }
-
-            move = xinput + zinput;
-            target.position += move;
-
-        }
-
-<<<<<<< Updated upstream
-=======
-
-    }
->>>>>>> Stashed changes
-
-        if (MoveCheck(move, target.position))
-        {
-            player.position = Vector3.MoveTowards(player.position, target.position, moveSpeed * Time.deltaTime);
-        }
-        else
-        {
-            target.transform.position = player.transform.position;
             
+            menu = GameObject.Find("Menu");
+
         }
 
-        //Menu commands - also will add music commands but focus on walls
-
-        if (Input.GetKeyDown(KeyCode.R))
+        // Update is called once per frame
+        void Update()
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            // This first part will control where the target moves. Then in fixed update it will raycast   
+
+            if (target.transform.position == player.transform.position && !menu.GetComponent<Toggle>().isOn && !pause)
+            {
+                if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
+                {
+                    move = new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0);
+                }
+
+                else if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f)
+                {
+                    move = new Vector3(0, 0, Input.GetAxisRaw("Vertical"));
+                }
+            }
+
+
+
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        private bool CanMove(Vector3 move, Vector3 target)
         {
-            SceneManager.LoadScene("Main Menu");
-        }
-
-    }
-
-    private bool MoveCheck(Vector3 move, Vector3 target)
-    {
-
-        if (!Physics.Raycast(target, Vector3.down))
-        {
-            return false;
-        }
-
-        foreach (Transform block in player.transform.GetComponentsInChildren<Transform>())
-        {
-            if (Physics.Raycast(block.position, move, 0.5f, layerMask))
+            Transform[] playerCubes = player.transform.GetComponentsInChildren<Transform>(); //get componenet expensive to call everyloop so it is cached
+            foreach (Transform block in playerCubes)  // TODO: swap to a for loop when you can but keeping this readable for now as a beginner
+            {
+                if (Physics.Raycast(block.position, move, 0.5f, layerMask))
+                {
+                    return false;
+                }
+            }
+            if (!Physics.Raycast(target, Vector3.down))
             {
                 return false;
             }
+            return true;
         }
 
-        return true;
-    }
+        private void FixedUpdate() // needed to use fixed update or it sometimes flew by. did the fixed update do this? so i need fixed update to ensure attach but I need late or normale update to not collide with walls...
+        {
+            target.position += move; //had to move down here or i had the issue of cubes not attach OR wall not detected no longer detecting walls
 
-}
+            if (CanMove(move, target.position))
+            {
+                player.position = Vector3.MoveTowards(player.position, target.position, moveSpeed * Time.deltaTime);
+            }
+            else
+            {
+                target.transform.position = player.transform.position;
+
+            }
+            move = Vector3.zero;
+        }
+
+    }

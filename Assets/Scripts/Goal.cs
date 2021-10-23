@@ -14,9 +14,9 @@ public class Goal : MonoBehaviour
         {
             string thisLevel = SceneManager.GetActiveScene().name;
             int intLevel = int.Parse(thisLevel) + 1;
-            string nextLevel = intLevel.ToString();
-            if (intLevel == 21) nextLevel = "Main Menu";
-            SceneManager.LoadScene(nextLevel);
+           // string nextLevel = intLevel.ToString();
+           // if (intLevel == 21) nextLevel = "Main Menu";
+            SceneManager.LoadScene(intLevel);
         }
     }
 }

@@ -11,12 +11,7 @@ GameObject:
   - component: {fileID: 8447597048047134448}
   - component: {fileID: 2019240983880496904}
   - component: {fileID: 7534707000587786610}
-<<<<<<< Updated upstream
   m_Layer: 0
-=======
-  - component: {fileID: 1414749165369835730}
-  m_Layer: 9
->>>>>>> Stashed changes
   m_Name: Turn90CW
   m_TagString: Untagged
   m_Icon: {fileID: 0}
