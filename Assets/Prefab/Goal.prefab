@@ -108,3 +108,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a74cdfa84610e434cbfab13659f43bbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerEmpty: {fileID: 0}
+  check: 0
+  layerMask: 0

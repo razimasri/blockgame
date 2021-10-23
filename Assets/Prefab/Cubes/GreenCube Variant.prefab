@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1290042893315821055, guid: 1d489cf0ead915843bf26767537cc737, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1290042893315821055, guid: 1d489cf0ead915843bf26767537cc737, type: 3}
       propertyPath: m_LocalPosition.y
@@ -21,7 +21,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1290042893315821055, guid: 1d489cf0ead915843bf26767537cc737, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1290042893315821055, guid: 1d489cf0ead915843bf26767537cc737, type: 3}
       propertyPath: m_LocalRotation.w
@@ -51,13 +51,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1605885347060535182, guid: 1d489cf0ead915843bf26767537cc737, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2986351094441211377, guid: 1d489cf0ead915843bf26767537cc737, type: 3}
       propertyPath: m_Name
       value: GreenCube Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2986351094441211377, guid: 1d489cf0ead915843bf26767537cc737, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2986351094441211377, guid: 1d489cf0ead915843bf26767537cc737, type: 3}
+      propertyPath: m_TagString
+      value: GreenCube
       objectReference: {fileID: 0}
     - target: {fileID: 6669827825383980526, guid: 1d489cf0ead915843bf26767537cc737, type: 3}
       propertyPath: target
@@ -90,6 +98,10 @@ PrefabInstance:
     - target: {fileID: 8403710646416869040, guid: 1d489cf0ead915843bf26767537cc737, type: 3}
       propertyPath: playerEmpty
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9006810194494450191, guid: 1d489cf0ead915843bf26767537cc737, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
