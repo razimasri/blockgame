@@ -4,17 +4,48 @@ using UnityEngine;
 
 public class Turn90CW : MonoBehaviour
 {
+
+    public GameObject player, playerEmpty;
+
+    public Animator anim;
     // Start is called before the first frame update
     void Start()
     {
-        transform.rotation = new Quaternion(0,0,0,0);
+        player = GameObject.Find("Player");
+        playerEmpty = GameObject.Find("PlayerEmpty");
+        anim = player.GetComponent<Animator>();
     }
 
     // Update is called once per frame
-    void Update()
+   
+
+    private void OnTriggerEnter(Collider other)
     {
-        float scale = 1 - 0.2f * Mathf.Pow(Mathf.Sin(Mathf.PI * Time.realtimeSinceStartup), 2);
-        transform.localScale = new Vector3(scale, scale, scale);
-        transform.Rotate(Vector3.up, 45 * Time.deltaTime);
+        StartCoroutine(MachineTrigger());
+        playerEmpty.GetComponent<PlayerController>().pause = true;
+
     }
+    private void OnTriggerExit(Collider other)
+    {
+        anim.SetBool("OnMachine", false);
+    }
+
+    private IEnumerator MachineTrigger()
+    {
+        Debug.Log("MachineTrigger");
+        yield return new WaitForSeconds(0.1f);//i know this isnot the correct way to do it make it an event but i am tired now
+        if (player.transform.position == transform.position)
+        {
+
+            anim.SetTrigger("90CW");
+            anim.SetBool("OnMachine", true);
+
+            StartCoroutine(playerEmpty.GetComponent<PlayerController>().Wait());
+            yield return null;
+        }
+
+
+    }
+
+
 }

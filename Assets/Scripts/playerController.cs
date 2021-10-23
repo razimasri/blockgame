@@ -1,25 +1,51 @@
 using UnityEngine;
+<<<<<<< Updated upstream
 using UnityEngine.SceneManagement;
+=======
+using UnityEngine.UI;
+using System.Collections;
+>>>>>>> Stashed changes
 
 public class playerController : MonoBehaviour
 {
 
     private float moveSpeed = 7f;
+<<<<<<< Updated upstream
     [SerializeField] Transform player;
     [SerializeField] Transform target;
     private int layerMask;
 
+=======
+    [SerializeField] Transform player, target;
+    [SerializeField] GameObject menu;
+    public LayerMask layerMask;
+    private Vector3 move;
+    public bool pause;
+
+    public IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(0.6f);
+        pause = false;
+        yield return null;
+    }
+>>>>>>> Stashed changes
 
 
     // Start is called before the first frame update
     void Start()
     {
+<<<<<<< Updated upstream
         layerMask = LayerMask.GetMask("Wall");
+=======
+        menu = GameObject.Find("Menu");
+        
+>>>>>>> Stashed changes
     }
 
     // Update is called once per frame
     void Update()
     {
+<<<<<<< Updated upstream
 
         // This first part will control where the target moves. Not wall collision added yet. but it is nice and smooth
         Vector3 xinput = Vector3.zero;
@@ -28,6 +54,11 @@ public class playerController : MonoBehaviour
 
 
         if (target.transform.position == player.transform.position)
+=======
+        // This first part will control where the target moves. Then in fixed update it will raycast   
+        
+        if (target.transform.position == player.transform.position && !menu.GetComponent<Toggle>().isOn &&!pause)
+>>>>>>> Stashed changes
         {
 
             if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
@@ -46,6 +77,11 @@ public class playerController : MonoBehaviour
 
         }
 
+<<<<<<< Updated upstream
+=======
+
+    }
+>>>>>>> Stashed changes
 
         if (MoveCheck(move, target.position))
         {

@@ -762,7 +762,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -788,7 +788,7 @@ MeshCollider:
   m_GameObject: {fileID: 2298371941375226855}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
@@ -802,8 +802,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2779959187096536822}
+  - component: {fileID: 2716996210873894421}
   - component: {fileID: 2140981962491778304}
+<<<<<<< Updated upstream
   m_Layer: 0
+=======
+  - component: {fileID: 6380925721959127866}
+  m_Layer: 9
+>>>>>>> Stashed changes
   m_Name: Turn90CCW
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -818,13 +824,26 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7703540458601715304}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 0, z: 0}
+  m_LocalPosition: {x: 8, y: -0.5, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7300374846328342446}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2716996210873894421
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7703540458601715304}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.33333334, y: 1, z: 0.33333334}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2140981962491778304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -837,3 +856,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 216974d0336f8a2489b8695bb4de0255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  playerEmpty: {fileID: 0}
+  anim: {fileID: 0}
+--- !u!95 &6380925721959127866
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7703540458601715304}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3cedd839fdc2c4443983b7a4444d05ba, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

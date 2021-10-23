@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 990713823703970923}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.16666669, y: -0.5, z: 0.16666669}
+  m_LocalPosition: {x: -0.16666651, y: -0.5, z: 0.16666698}
   m_LocalScale: {x: 0.33333334, y: 1, z: 0.33333334}
   m_Children: []
   m_Father: {fileID: 3292313885590602245}
@@ -762,7 +762,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -788,7 +788,7 @@ MeshCollider:
   m_GameObject: {fileID: 990713823703970923}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
@@ -803,7 +803,13 @@ GameObject:
   m_Component:
   - component: {fileID: 3292313885590602245}
   - component: {fileID: -7846578459698194023}
+<<<<<<< Updated upstream
   m_Layer: 0
+=======
+  - component: {fileID: 3879998584004900962}
+  - component: {fileID: 197634272875633830}
+  m_Layer: 9
+>>>>>>> Stashed changes
   m_Name: Turn180
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -819,7 +825,7 @@ Transform:
   m_GameObject: {fileID: 4388826852339669384}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9, y: 1, z: 0.9}
   m_Children:
   - {fileID: 2248125323873640947}
   m_Father: {fileID: 0}
@@ -837,3 +843,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c45b0e89ece21543a638a9d8961652b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  playerEmpty: {fileID: 0}
+  anim: {fileID: 0}
+--- !u!65 &3879998584004900962
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4388826852339669384}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.33333334, y: 1, z: 0.33333334}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &197634272875633830
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4388826852339669384}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2f6f78f4153d3974aafd368ed4e150bd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

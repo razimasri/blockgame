@@ -1,20 +1,49 @@
 using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
+
 
 public class Turn180 : MonoBehaviour
 {
+    public GameObject player, playerEmpty;
+
+    public Animator anim;
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GameObject.Find("Player");
+        playerEmpty = GameObject.Find("PlayerEmpty");
+        anim = player.GetComponent<Animator>();
     }
 
     // Update is called once per frame
-    void Update()
+
+
+    private void OnTriggerEnter(Collider other)
     {
-        float scale = 1 -  0.2f*Mathf.Pow(Mathf.Sin(Mathf.PI * Time.realtimeSinceStartup),2);
-        transform.localScale = new Vector3(scale, scale, scale);
-        transform.localRotation = Quaternion.AngleAxis(Mathf.Cos(Mathf.PI * Time.realtimeSinceStartup) * 90,Vector3.up );
+        StartCoroutine(MachineTrigger());
+        playerEmpty.GetComponent<PlayerController>().pause = true;
+
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        anim.SetBool("OnMachine", false);
+    }
+
+    private IEnumerator MachineTrigger()
+    {
+        Debug.Log("MachineTrigger");
+        yield return new WaitForSeconds(0.1f);//i know this isnot the correct way to do it make it an event but i am tired now
+        if (player.transform.position == transform.position)
+        {
+
+            anim.SetTrigger("180Trigger");
+            anim.SetBool("OnMachine", true);
+
+            StartCoroutine(playerEmpty.GetComponent<PlayerController>().Wait());
+            yield return null;
+        }
+
+
     }
 }
