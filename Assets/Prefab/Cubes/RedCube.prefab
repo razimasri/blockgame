@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 1290042893315821055}
   - component: {fileID: 1548490592236585822}
   - component: {fileID: 6934799284607026808}
-  - component: {fileID: 8403710646416869040}
   - component: {fileID: 9006810194494450191}
   - component: {fileID: 1605885347060535182}
+  - component: {fileID: 2940958007657591825}
   m_Layer: 7
   m_Name: RedCube
-  m_TagString: Untagged
+  m_TagString: RedCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,24 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8403710646416869040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2986351094441211377}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bee522c5a00d36d45aa3dbbf8305d60b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maybeFall: 0
-  once: 0
-  fadeDirection: 0
-  playerEmpty: {fileID: 7297403986044717881, guid: 4024d04841d65cf4a9dbe1f7eecdd25a, type: 3}
-  normal: {fileID: 2800000, guid: ae07308a178bec24882b8389e6d53110, type: 3}
-  m_Renderer: {fileID: 0}
 --- !u!135 &9006810194494450191
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -131,3 +113,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2940958007657591825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2986351094441211377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 696fc1cbc78398049b915f9e7ac9bc81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}

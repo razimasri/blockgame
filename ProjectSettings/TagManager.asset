@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - RedCube
+  - BlueCube
+  - GreenCube
+  - YellowCube
+  - PlayUI
+  - Music
   layers:
   - Default
   - TransparentFX
@@ -14,9 +20,9 @@ TagManager:
   - world
   - Cubes
   - Wall
-  - 
-  - 
-  - 
+  - Machines
+  - Destroy
+  - Player
   - 
   - 
   - 

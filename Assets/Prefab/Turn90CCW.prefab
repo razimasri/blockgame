@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1156174249877004995}
   - component: {fileID: 8981991278992925293}
   - component: {fileID: 2490490170405680436}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -803,7 +803,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2779959187096536822}
   - component: {fileID: 2140981962491778304}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Turn90CCW
   m_TagString: Untagged
   m_Icon: {fileID: 0}
